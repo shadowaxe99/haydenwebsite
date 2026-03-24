@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-navy: #0F172A;
+  --color-brand-gold: #94785D;
+  --color-brand-cream: #FDFCFB;
+  --color-brand-slate: #475569;
+  --color-brand-accent: #C5A059;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-brand-cream text-brand-navy font-sans antialiased selection:bg-brand-gold/20;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-32;
+}
+
+.nav-link {
+  @apply text-[10px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 hover:text-brand-gold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all hover:after:w-full;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.caps-label {
+  @apply text-[10px] uppercase tracking-[0.25em] font-bold text-brand-gold mb-4 block;
+}
+
+.card-hover {
+  @apply transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-navy/5;
+}
+
+.divider {
+  @apply h-[1px] w-full bg-brand-navy/10 my-12;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-navy/20 rounded-full hover:bg-brand-navy/40 transition-colors;
+}

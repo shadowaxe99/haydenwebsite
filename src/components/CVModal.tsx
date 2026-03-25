@@ -29,10 +29,10 @@ export default function CVModal({ onClose }: { onClose: () => void }) {
             <p className="text-xs sm:text-sm text-slate-600 font-mono">Chapel Hill, NC 27516 | haydengraham4815@gmail.com | 336-690-1387</p>
           </div>
           
-          <div className="mb-10">
+          <div className="mb-10 print:break-inside-avoid">
             <h2 className="text-lg uppercase tracking-widest font-bold border-b-2 border-brand-navy pb-2 mb-6 text-brand-navy">Education</h2>
             {EDUCATION.map((edu, i) => (
-              <div key={i} className="mb-6">
+              <div key={i} className="mb-6 print:break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1 sm:gap-0">
                   <h3 className="font-bold text-brand-navy">{edu.institution}</h3>
                   <span className="text-xs sm:text-sm font-mono text-slate-600">{edu.location}</span>
@@ -51,7 +51,7 @@ export default function CVModal({ onClose }: { onClose: () => void }) {
           <div className="mb-10">
             <h2 className="text-lg uppercase tracking-widest font-bold border-b-2 border-brand-navy pb-2 mb-6 text-brand-navy">Professional Experience</h2>
             {EXPERIENCE.map((exp, i) => (
-              <div key={i} className="mb-6">
+              <div key={i} className="mb-6 print:break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1 sm:gap-0">
                   <h3 className="font-bold text-brand-navy">{exp.organization}</h3>
                   <span className="text-xs sm:text-sm font-mono text-slate-600">{exp.location}</span>
@@ -70,7 +70,7 @@ export default function CVModal({ onClose }: { onClose: () => void }) {
           <div className="mb-10">
             <h2 className="text-lg uppercase tracking-widest font-bold border-b-2 border-brand-navy pb-2 mb-6 text-brand-navy">Leadership & Community Service</h2>
             {LEADERSHIP.map((item, i) => (
-              <div key={i} className="mb-6">
+              <div key={i} className="mb-6 print:break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1 sm:gap-0">
                   <h3 className="font-bold text-brand-navy">{item.organization}</h3>
                   <span className="text-xs sm:text-sm font-mono text-slate-600">{item.period}</span>
@@ -83,22 +83,31 @@ export default function CVModal({ onClose }: { onClose: () => void }) {
             ))}
           </div>
 
-          <div className="mb-10">
+          <div className="mb-10 print:break-inside-avoid">
             <h2 className="text-lg uppercase tracking-widest font-bold border-b-2 border-brand-navy pb-2 mb-6 text-brand-navy">Publications & Selected Writings</h2>
             <ul className="space-y-4 text-sm text-slate-700">
               {PUBLICATIONS.map((pub, i) => (
-                <li key={i}>
+                <li key={i} className="print:break-inside-avoid">
                   <strong>Graham, Hayden.</strong> "{pub.title}." <em>{pub.citation}</em>. {pub.date}.
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mb-10">
+          <div className="mb-10 print:break-inside-avoid">
             <h2 className="text-lg uppercase tracking-widest font-bold border-b-2 border-brand-navy pb-2 mb-6 text-brand-navy">Interests</h2>
             <p className="text-sm text-slate-700 leading-relaxed">
               {INTERESTS.map(i => `${i.name} (${i.detail})`).join(' | ')}
             </p>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-slate-100 text-center print:hidden">
+            <button 
+              onClick={onClose}
+              className="text-xs uppercase tracking-[0.3em] font-bold text-slate-400 hover:text-brand-navy transition-colors"
+            >
+              Close Document
+            </button>
           </div>
         </div>
       </motion.div>

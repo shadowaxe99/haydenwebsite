@@ -1,21 +1,34 @@
-import { motion, useInView, animate } from 'motion/react';
+import { motion, useInView, useSpring, useTransform } from 'motion/react';
 import { useRef, useEffect, useState } from 'react';
 
 function Counter({ from, to, suffix, prefix = "" }: { from: number, to: number, suffix: string, prefix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [current, setCurrent] = useState(from);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const spring = useSpring(from, {
+    mass: 1,
+    stiffness: 50,
+    damping: 30,
+    restDelta: 0.001
+  });
+  
+  const display = useTransform(spring, (current) => Math.round(current));
 
   useEffect(() => {
-    if (inView) {
-      const controls = animate(from, to, {
-        duration: 2.5,
-        ease: "easeOut",
-        onUpdate: (v) => setCurrent(Math.round(v)),
-      });
-      return controls.stop;
+    if (isInView) {
+      spring.set(to);
     }
-  }, [from, to, inView]);
+  }, [isInView, spring, to]);
+
+  // We use a local state to force re-render because we're rendering into a plain span
+  // Alternatively, we could use <motion.span>{display}</motion.span> if display is a MotionValue
+  const [current, setCurrent] = useState(from);
+  
+  useEffect(() => {
+    return display.on("change", (latest) => {
+      setCurrent(latest);
+    });
+  }, [display]);
 
   return <span ref={ref}>{prefix}{current}{suffix}</span>;
 }
@@ -34,13 +47,14 @@ export default function About() {
             >
               <span className="caps-label">Personal Ethos</span>
               <h2 className="text-5xl md:text-6xl font-serif text-brand-navy mb-8 leading-tight">
-                Advocacy as an <br />
-                <span className="text-brand-gold italic">Act of Grace</span>
+                <span className="block whitespace-nowrap">Advocacy as an</span>
+                <span className="text-brand-gold italic block whitespace-nowrap">Act of Grace</span>
               </h2>
               
-              <div className="p-8 bg-brand-cream border-l-4 border-brand-gold">
-                <p className="text-brand-navy font-serif text-xl italic leading-relaxed">
-                  "The law can recognize a person’s full humanity even at their lowest point. I want to advocate for people whose own causes and effects are inducing their afflictions."
+              <div className="p-8 bg-brand-cream border-l-4 border-brand-gold relative">
+                <div className="absolute top-4 left-4 text-6xl text-brand-gold/20 font-serif leading-none">"</div>
+                <p className="text-brand-navy font-serif text-xl italic leading-relaxed relative z-10 pl-4">
+                  The law can recognize a person's full humanity even at their lowest point. I want to advocate for people whose own causes and effects are inducing their afflictions.
                 </p>
               </div>
             </motion.div>
@@ -54,7 +68,7 @@ export default function About() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-lg text-slate-700 leading-relaxed font-light space-y-6"
             >
-              <p>
+              <p className="first-letter:text-5xl first-letter:font-serif first-letter:text-brand-gold first-letter:mr-3 first-letter:float-left first-line:uppercase first-line:tracking-widest">
                 My path to the University of North Carolina School of Law is rooted in a unique intersection of academic rigor and lived experience. As a student of Analytic Philosophy, I explored the metaphysics of free will—a study that became deeply personal through my journey in recovery.
               </p>
               <p>

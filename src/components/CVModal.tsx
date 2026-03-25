@@ -4,12 +4,12 @@ import { EDUCATION, EXPERIENCE, LEADERSHIP, PUBLICATIONS, INTERESTS } from '../c
 
 export default function CVModal({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-brand-navy/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-brand-navy/80 backdrop-blur-sm print:static print:block print:p-0 print:bg-transparent print:inset-auto">
       <motion.div 
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-        className="bg-white w-full max-w-5xl max-h-full overflow-y-auto shadow-2xl relative"
+        className="bg-white w-full max-w-5xl max-h-full overflow-y-auto shadow-2xl relative print:max-w-none print:max-h-none print:overflow-visible print:shadow-none print:block"
       >
         <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-slate-100 p-4 flex justify-between items-center z-10 print:hidden">
           <h2 className="font-serif text-xl text-brand-navy">Curriculum Vitae</h2>

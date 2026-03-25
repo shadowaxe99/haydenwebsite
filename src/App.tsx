@@ -16,17 +16,19 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar onOpenCV={() => setIsCVOpen(true)} />
-      <main>
-        <Hero onOpenCV={() => setIsCVOpen(true)} />
-        <About />
-        <Experience />
-        <Education />
-        <Leadership />
-        <Interests />
-        <Contact />
-      </main>
-      <Footer />
+      <div className={isCVOpen ? "print:hidden" : ""}>
+        <Navbar onOpenCV={() => setIsCVOpen(true)} />
+        <main>
+          <Hero onOpenCV={() => setIsCVOpen(true)} />
+          <About />
+          <Experience />
+          <Education />
+          <Leadership />
+          <Interests />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
 
       <AnimatePresence>
         {isCVOpen && <CVModal onClose={() => setIsCVOpen(false)} />}

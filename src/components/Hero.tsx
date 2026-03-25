@@ -26,20 +26,36 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
                 A scholar of philosophy and ethics transitioning to the legal profession. Dedicated to advocacy that recognizes human dignity through the lens of recovery and service.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-end">
                 <motion.a 
                   href="#about"
                   whileHover={{ x: 5 }}
-                  className="flex items-center justify-center sm:justify-start gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-brand-gold group border border-brand-gold/30 sm:border-transparent p-4 sm:p-0 rounded-full sm:rounded-none"
+                  className="flex items-center justify-center sm:justify-start gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-brand-gold group border border-brand-gold/30 sm:border-transparent p-4 sm:p-0 rounded-full sm:rounded-none w-full sm:w-auto"
                 >
                   Explore Portfolio <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </motion.a>
-                <button 
-                  onClick={onOpenCV}
-                  className="flex items-center justify-center sm:justify-start gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-white/80 hover:text-white transition-colors border border-white/20 sm:border-transparent p-4 sm:p-0 rounded-full sm:rounded-none"
-                >
-                  <FileText size={18} /> Curriculum Vitae
-                </button>
+                
+                <div className="flex items-center gap-6 w-full sm:w-auto justify-center sm:justify-start">
+                  <motion.button 
+                    onClick={onOpenCV}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-center gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-white hover:text-brand-gold transition-all border border-white/20 hover:border-brand-gold/50 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10"
+                  >
+                    <FileText size={18} /> Curriculum Vitae
+                  </motion.button>
+                  
+                  <motion.a 
+                    href="https://www.linkedin.com/in/hayden-graham-5a687624b/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="text-white/60 hover:text-brand-gold transition-all p-2"
+                    title="LinkedIn Profile"
+                  >
+                    <Linkedin size={22} />
+                  </motion.a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -47,12 +63,12 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
       </div>
 
       {/* Vertical Rail Text & Social */}
-      <div className="absolute right-12 bottom-24 hidden lg:flex flex-col items-center gap-8">
-        <a href="https://www.linkedin.com/in/hayden-graham-5a687624b/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-gold transition-colors">
+      <div className="absolute right-12 bottom-24 hidden lg:flex flex-col items-center gap-8 z-30">
+        <a href="https://www.linkedin.com/in/hayden-graham-5a687624b/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-gold transition-colors cursor-pointer">
           <Linkedin size={20} />
         </a>
         <div className="w-[1px] h-12 bg-white/20"></div>
-        <span className="writing-mode-vertical-rl rotate-180 text-[10px] uppercase tracking-[0.5em] text-white/20 font-mono mt-4">
+        <span className="[writing-mode:vertical-rl] text-[10px] uppercase tracking-[0.5em] text-white/20 font-mono mt-4">
           UNC LAW • CLASS OF 2029 • CHAPEL HILL, NC
         </span>
       </div>

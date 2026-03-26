@@ -32,9 +32,9 @@ export default function Education() {
                   <div className="absolute left-0 top-8 bottom-8 w-[3px] bg-brand-gold/20 rounded-r-full group-hover:bg-brand-gold transition-colors duration-500"></div>
                   
                   <div className="relative p-8 sm:p-10">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 sm:gap-0 mb-4">
-                      <h3 className="text-2xl sm:text-3xl font-serif text-brand-navy group-hover:text-brand-gold transition-colors duration-500">{edu.institution}</h3>
-                      <span className="text-[10px] font-mono text-brand-gold uppercase tracking-[0.2em] font-bold bg-brand-gold/10 px-3 py-1 rounded-full">{edu.period}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 sm:gap-4 mb-4">
+                      <h3 className="text-xl sm:text-3xl font-serif text-brand-navy group-hover:text-brand-gold transition-colors duration-500 break-words">{edu.institution}</h3>
+                      <span className="text-[10px] font-mono text-brand-gold uppercase tracking-[0.2em] font-bold bg-brand-gold/10 px-3 py-1 rounded-full w-fit shrink-0">{edu.period}</span>
                     </div>
                     <p className="text-lg sm:text-xl font-medium text-slate-700 mb-8 font-serif italic">{edu.degree}</p>
                     

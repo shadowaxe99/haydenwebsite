@@ -4,12 +4,16 @@ import { Publication } from '../types';
 
 export default function ArticleModal({ article, onClose }: { article: Publication, onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-brand-navy/80 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-brand-navy/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         className="bg-brand-cream w-full max-w-3xl max-h-full overflow-y-auto shadow-2xl relative p-6 sm:p-8 md:p-16"
+        onClick={(e) => e.stopPropagation()}
       >
         <button onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-brand-navy transition-colors">
           <X size={24} />

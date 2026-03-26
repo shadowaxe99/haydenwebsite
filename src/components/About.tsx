@@ -46,9 +46,9 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <span className="caps-label">Personal Ethos</span>
-              <h2 className="text-5xl md:text-6xl font-serif text-brand-navy mb-8 leading-tight">
-                <span className="block whitespace-nowrap">Advocacy as an</span>
-                <span className="text-brand-gold italic block whitespace-nowrap">Act of Grace</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-brand-navy mb-8 leading-tight">
+                <span className="block sm:whitespace-nowrap">Advocacy as an</span>
+                <span className="text-brand-gold italic block sm:whitespace-nowrap">Act of Grace</span>
               </h2>
               
               <div className="p-8 bg-brand-cream border-l-4 border-brand-gold relative">

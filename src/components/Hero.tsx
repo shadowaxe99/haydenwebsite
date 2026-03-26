@@ -65,16 +65,16 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="text-6xl sm:text-7xl md:text-[8rem] font-serif mb-8 md:mb-12 leading-[0.85] tracking-tighter perspective-1000"
+              className="text-5xl sm:text-7xl md:text-[8rem] font-serif mb-8 md:mb-12 leading-[0.85] tracking-tighter perspective-1000"
             >
-              <div className="flex overflow-hidden pb-2">
+              <div className="flex flex-wrap overflow-hidden pb-2">
                 {titleText.split('').map((char, index) => (
                   <motion.span key={index} variants={letterVariants} className="inline-block origin-bottom">
                     {char}
                   </motion.span>
                 ))}
               </div>
-              <div className="flex overflow-hidden text-brand-gold italic font-light">
+              <div className="flex flex-wrap overflow-hidden text-brand-gold italic font-light">
                 {subtitleText.split('').map((char, index) => (
                   <motion.span key={index} variants={letterVariants} className="inline-block origin-bottom">
                     {char}
@@ -131,9 +131,6 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
 
       {/* Vertical Rail Text & Social */}
       <div className="absolute right-12 bottom-24 hidden lg:flex flex-col items-center gap-8 z-30">
-        <a href="https://www.linkedin.com/in/hayden-graham-5a687624b/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-gold transition-colors cursor-pointer">
-          <Linkedin size={20} />
-        </a>
         <div className="w-[1px] h-12 bg-white/20"></div>
         <span className="[writing-mode:vertical-rl] text-[10px] uppercase tracking-[0.5em] text-white/20 font-mono mt-4">
           UNC LAW • CLASS OF 2029 • CHAPEL HILL, NC

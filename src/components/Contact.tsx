@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding bg-white">
       <div className="container mx-auto max-w-6xl">
-        <div className="bg-brand-navy p-8 sm:p-12 md:p-24 relative overflow-hidden">
+        <div className="bg-brand-navy p-6 sm:p-12 md:p-24 relative overflow-hidden">
           {/* Decorative Elements */}
           <motion.div 
             animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
@@ -40,13 +40,13 @@ export default function Contact() {
                 className="flex flex-col sm:flex-row sm:items-center justify-between p-6 md:p-8 border border-white/10 hover:border-brand-gold transition-all duration-500 group gap-4 sm:gap-0 relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-brand-gold/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-                <div className="flex items-center gap-4 md:gap-6 relative z-10">
+                <div className="flex items-center gap-3 md:gap-6 relative z-10 min-w-0 flex-1">
                   <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-500">
                     <Mail size={20} />
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Email Address</p>
-                    <p className="text-white font-serif text-sm sm:text-lg md:text-xl truncate">haydengraham4815@gmail.com</p>
+                    <p className="text-white font-serif text-sm sm:text-lg md:text-xl break-all sm:break-words">haydengraham4815@gmail.com</p>
                   </div>
                 </div>
                 <ArrowUpRight size={24} className="text-white/20 group-hover:text-brand-gold transition-colors self-end sm:self-auto shrink-0 relative z-10" />

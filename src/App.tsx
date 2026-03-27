@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring, useMotionValueEvent } from 'motion/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Leadership from './components/Leadership';
-import Interests from './components/Interests';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import CVModal from './components/CVModal';
+
+// Lazy load below-the-fold components for performance
+const About = lazy(() => import('./components/About'));
+const Experience = lazy(() => import('./components/Experience'));
+const Education = lazy(() => import('./components/Education'));
+const Leadership = lazy(() => import('./components/Leadership'));
+const Interests = lazy(() => import('./components/Interests'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const CVModal = lazy(() => import('./components/CVModal'));
 
 export default function App() {
   const [isCVOpen, setIsCVOpen] = useState(false);
@@ -68,18 +70,26 @@ export default function App() {
         <Navbar onOpenCV={() => setIsCVOpen(true)} />
         <main>
           <Hero onOpenCV={() => setIsCVOpen(true)} />
-          <About />
-          <Experience />
-          <Education />
-          <Leadership />
-          <Interests />
-          <Contact />
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin"></div></div>}>
+            <About />
+            <Experience />
+            <Education />
+            <Leadership />
+            <Interests />
+            <Contact />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
 
       <AnimatePresence>
-        {isCVOpen && <CVModal onClose={() => setIsCVOpen(false)} />}
+        {isCVOpen && (
+          <Suspense fallback={null}>
+            <CVModal onClose={() => setIsCVOpen(false)} />
+          </Suspense>
+        )}
       </AnimatePresence>
 
       {/* Back to Top */}

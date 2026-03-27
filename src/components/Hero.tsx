@@ -36,11 +36,10 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
         style={{ y: y2 }}
         animate={{ 
           scale: [1, 1.05, 1],
-          rotate: [0, 2, 0],
           opacity: [0.03, 0.06, 0.03]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute top-0 right-0 w-[60%] h-[120%] bg-brand-gold skew-x-12 translate-x-1/4 pointer-events-none origin-top-right blur-3xl"
+        className="absolute top-0 right-0 w-[60%] h-[120%] bg-brand-gold skew-x-12 translate-x-1/4 pointer-events-none origin-top-right blur-3xl will-change-transform"
       ></motion.div>
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-brand-navy to-transparent z-10 pointer-events-none"></div>
       
@@ -102,12 +101,12 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
                   Explore Portfolio <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </motion.a>
                 
-                <div className="flex items-center gap-6 w-full sm:w-auto justify-center sm:justify-start">
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center sm:justify-start">
                   <MagneticButton onClick={onOpenCV}>
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-white hover:text-brand-gold transition-all border border-white/20 hover:border-brand-gold/50 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 cursor-pointer"
+                      className="flex items-center justify-center gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-white hover:text-brand-gold transition-all border border-white/20 hover:border-brand-gold/50 px-6 py-4 sm:py-3 rounded-full bg-white/5 hover:bg-white/10 cursor-pointer w-full sm:w-auto"
                     >
                       <FileText size={18} /> Curriculum Vitae
                     </motion.div>
@@ -116,7 +115,7 @@ export default function Hero({ onOpenCV }: { onOpenCV: () => void }) {
                   <MagneticButton href="https://www.linkedin.com/in/hayden-graham-5a687624b/" target="_blank" rel="noopener noreferrer">
                     <motion.div 
                       whileHover={{ scale: 1.1 }}
-                      className="text-white/60 hover:text-brand-gold transition-all p-2 cursor-pointer"
+                      className="text-white/60 hover:text-brand-gold transition-all p-4 sm:p-2 cursor-pointer border border-white/10 sm:border-transparent rounded-full sm:rounded-none w-full sm:w-auto flex justify-center"
                       title="LinkedIn Profile"
                     >
                       <Linkedin size={22} />

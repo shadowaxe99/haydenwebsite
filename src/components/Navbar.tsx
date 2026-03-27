@@ -59,10 +59,11 @@ export default function Navbar({ onOpenCV }: { onOpenCV?: () => void }) {
 
         {/* Mobile Toggle */}
         <button 
-          className={`md:hidden transition-colors duration-500 ${isScrolled ? 'text-brand-navy' : 'text-white'}`}
+          className={`md:hidden p-2 -mr-2 transition-colors duration-500 ${isScrolled ? 'text-brand-navy' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -76,8 +77,9 @@ export default function Navbar({ onOpenCV }: { onOpenCV?: () => void }) {
             className="fixed inset-0 bg-brand-navy z-[60] md:hidden flex flex-col items-center justify-center"
           >
             <button 
-              className="absolute top-10 right-6 text-white"
+              className="absolute top-8 right-4 p-4 text-white"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
               <X size={32} />
             </button>

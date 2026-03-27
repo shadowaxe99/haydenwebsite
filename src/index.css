@@ -20,6 +20,7 @@
   
   body {
     @apply bg-brand-cream text-brand-navy font-sans antialiased selection:bg-brand-gold/20;
+    -webkit-text-size-adjust: 100%;
   }
   
   h1, h2, h3, h4 {
@@ -45,6 +46,7 @@
 
 .card-hover {
   @apply transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-navy/5;
+  will-change: transform, box-shadow;
 }
 
 .divider {
